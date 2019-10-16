@@ -1,7 +1,7 @@
 package br.com.ml.urlreducer.controller
 
 import br.com.ml.urlreducer.service.UrlService
-import br.com.ml.urlreducer.vo.UrlReducerRequest
+import br.com.ml.urlreducer.vo.UrlVO
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
@@ -14,13 +14,18 @@ class UrlReduceController {
     private lateinit var urlService: UrlService
 
     @PostMapping("/urlreducer")
-    fun urlReducer( @RequestBody @Validated urlReducerRequest: UrlReducerRequest): String{
-       return urlService.urlReducer(urlReducerRequest.originalUrl!!)
+    fun urlReducer( @RequestBody @Validated urlVO: UrlVO): UrlVO{
+       return urlService.urlReducer(urlVO.url!!)
+    }
+
+    @GetMapping("/{key}/urlextender")
+    fun urlExtender(@PathVariable key: String): UrlVO{
+        return urlService.findOriginalUrlByKey(key)
     }
 
     @GetMapping("/{key}")
-    fun findOriginalUrl(@PathVariable key: String): RedirectView {
-        return RedirectView(urlService.findOriginalUrl(key))
+    fun goToOriginalUrl(@PathVariable key: String): RedirectView {
+        return RedirectView(urlService.findOriginalUrlByKey(key).url.toString())
     }
 
     @DeleteMapping("/{key}")

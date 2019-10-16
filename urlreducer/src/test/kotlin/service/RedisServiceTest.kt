@@ -45,7 +45,7 @@ class RedisServiceTest {
     @Test
     fun `get key builder`() {
         var key =redisService.keyBuilder()
-        Assert.assertEquals(5, key.length)
+        Assert.assertEquals(6, key.length)
     }
 
 

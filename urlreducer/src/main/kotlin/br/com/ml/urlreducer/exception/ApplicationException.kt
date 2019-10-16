@@ -1,5 +1,5 @@
 package br.com.ml.urlreducer.exception
 
-abstract class ApplicationException(message: String, throwable: Throwable? = null) : RuntimeException(message, throwable)
+abstract class ApplicationException(message: String) : RuntimeException(message)
 
-class NotFoundException(message: String, throwable: Throwable? = null) : ApplicationException(message, throwable)
+class NotFoundException(message: String) : ApplicationException(message)

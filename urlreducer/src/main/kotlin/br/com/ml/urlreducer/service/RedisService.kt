@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
 import redis.clients.jedis.JedisCluster
+import java.util.concurrent.TimeUnit
 
 @Service
 class RedisService(@Autowired val jedisCluster: JedisCluster,
@@ -14,7 +15,7 @@ class RedisService(@Autowired val jedisCluster: JedisCluster,
     fun set(key: String, value: String) {
         try {
             with(jedisCluster) {
-                this.set(key, value)
+                this.set(key, value )
                 this.expire(key, ttl)
             }
         } catch (e: Exception) {
@@ -46,7 +47,7 @@ class RedisService(@Autowired val jedisCluster: JedisCluster,
     }
 
     fun keyBuilder(): String {
-        return RandomStringUtils.randomAlphabetic(5)
+        return RandomStringUtils.randomAlphabetic(6)
     }
 
 }

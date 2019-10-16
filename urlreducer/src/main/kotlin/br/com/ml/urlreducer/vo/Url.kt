@@ -3,9 +3,10 @@ package br.com.ml.urlreducer.vo
 import com.fasterxml.jackson.annotation.JsonProperty
 import javax.validation.constraints.NotNull
 
-data class UrlReducerRequest (
+data class UrlVO (
 
     @get:NotNull(message = "{field} originalUrl {not_null}")
-    @get:JsonProperty("original_url")
-    var originalUrl: String?
+    @get:JsonProperty("url")
+    var url: String?
 )
+
