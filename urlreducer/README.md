@@ -46,7 +46,7 @@ https://redis.io/
 #### docker-compose redis-cluster
 https://itsmetommy.com/2018/05/24/docker-compose-redis-cluster/
 
-#### Construindo e iniciando todos os containers, dentro da pasta ../url-reducer/docker-redis-cluster-master
+#### Construindo e iniciando todos os containers, dentro da pasta ../url-reducer/urlreducer/docker-redis-cluster-master
 docker-compose up --build -d
 
 #### Criando o cluster 
